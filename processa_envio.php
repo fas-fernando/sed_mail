@@ -63,7 +63,7 @@ try {
 
     //Recipients
     $mail->setFrom('ad.secre.boavista@gmail.com', 'Boa vista');
-    $mail->addAddress('benesinho14@gmail.com', 'Fernando');
+    $mail->addAddress($mensagem->__get("para"));
     // $mail->addReplyTo('info@example.com', 'Information');
     // $mail->addCC('cc@example.com');
     // $mail->addBCC('bcc@example.com');
@@ -74,9 +74,9 @@ try {
 
     //Content
     $mail->isHTML(true);
-    $mail->Subject = 'Oi';
-    $mail->Body    = 'Este é um email de teste com <strong>Send Mail</strong>';
-    $mail->AltBody = 'Este é um email de teste com Send Mail';
+    $mail->Subject = $mensagem->__get("assunto");
+    $mail->Body    = $mensagem->__get("mensagem");
+    $mail->AltBody = 'É necessário usar um client email HTML para ter acesso total ao conteúdo dessa mensagem';
 
     $mail->send();
     echo 'Mensagem enviada com sucesso!';
